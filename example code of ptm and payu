@@ -1,0 +1,29 @@
+import java.util.Arrays;
+
+public class MinAverageCalculator {
+    public static double minAverage(int[] nums) {
+        Arrays.sort(nums); // Sort the array
+        double minAvg = Double.MAX_VALUE;
+
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            double avg = (nums[left] + nums[right]) / 2.0;
+            minAvg = Math.min(minAvg, avg);
+            left++;
+            right--;
+        }
+
+        return minAvg;
+    }
+
+    // Test cases
+    public static void main(String[] args) {
+        int[] nums1 = {7, 8, 3, 4, 15, 13, 4, 1};
+        int[] nums2 = {1, 9, 8, 3, 10, 5};
+        int[] nums3 = {1, 2, 3, 7, 8, 9};
+
+        System.out.println(minAverage(nums1)); // Output: 5.5
+        System.out.println(minAverage(nums2)); // Output: 5.5
+        System.out.println(minAverage(nums3)); // Output: 5.0
+    }
+}
